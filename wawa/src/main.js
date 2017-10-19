@@ -6,7 +6,8 @@ import router from './router'
 
 import './assets/yinyuecss/reset.css'
 import './assets/yinyuecss/index.css'
- 
+import './assets/bofangcss/index.css'
+import './assets/paihangcss.css'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

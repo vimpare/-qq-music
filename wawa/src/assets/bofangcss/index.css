@@ -1,0 +1,146 @@
+#paihangbox {
+  width: 62.1rem;
+  background: #fff;
+}
+.header {
+  width: 100%;
+  padding-top: 1.2rem;
+  height: 6.1rem;
+  margin-top: 3.5rem;
+}
+.fanhui-icon {
+  float: left;
+  width: 1.2rem;
+  height: 2rem;
+  background: red;
+  margin-left: 2.8rem;
+  margin-top: 0.8rem;
+}
+.bofang-icon {
+  float: right;
+  width: 3rem;
+  height: 2.3rem;
+  margin-top: 0.25rem;
+  margin-right: 1.95rem;
+  background: red;
+  margin-top: 0.8rem;
+}
+.mod-song dl {
+  width: 42rem;
+  margin: 9.25rem auto 5rem;
+  text-align: center;
+}
+.mod-song dt img {
+  width: 42rem;
+  height: 42rem;
+  border-radius: 50%;
+}
+.mod-song-name {
+  font-size: 2.5rem;
+  margin-top: 5.4rem;
+}
+.mod-song-singer {
+  font-size: 1.8rem;
+  margin-top: 2.7rem;
+  color: #8e8e8e;
+}
+.jindu {
+  width: 55rem;
+  margin: 5rem auto;
+  text-align: center;
+}
+.jindu span {
+  float: left;
+  font-size: 1.8rem;
+}
+.jindu-tiao {
+  float: left;
+  width: 39.5rem;
+  height: 0.3rem;
+  border: 0.05rem solid #8e8e8e;
+  margin: 0.9rem 3rem;
+}
+.jindu-bianse {
+  width: 5rem;
+  height: 0.2rem;
+  background: #777777;
+}
+.song-item-icon {
+  width: 39rem;
+  margin: 3rem auto;
+}
+.song-icon-xihuan {
+  float: left;
+  width: 3.3rem;
+  height: 3.3rem;
+  background-image: url('jingling2.png');
+  background-position: left top;
+  margin-right: 7.6rem;
+}
+.song-icon-xiazai {
+  float: left;
+  width: 3.3rem;
+  height: 3.3rem;
+  background-image: url('jingling2.png');
+  background-position: left top;
+  margin-right: 7.6rem;
+}
+.song-icon-pinglun {
+  float: left;
+  width: 3rem;
+  height: 3rem;
+  background-image: url('jingling2.png');
+  background-position: left -8.8rem;
+  margin-top: 0.5rem;
+  margin-right: 7.6rem;
+}
+.song-icon-more {
+  float: left;
+  width: 3.3rem;
+  height: 0.6rem;
+  background-image: url('jingling2.png');
+  margin-top: 1rem;
+  background-position: left -13.05rem;
+}
+.song-icon {
+  margin-top: 2.5rem;
+}
+.song-icon-moshi {
+  float: left;
+  width: 2.7rem;
+  height: 2.7rem;
+  background-image: url('jingling.png');
+  background-position: left top;
+  margin: 2rem 10rem 0rem 5rem;
+}
+.song-icon-prev {
+  float: left;
+  width: 2.95rem;
+  height: 2.65rem;
+  background-image: url('jingling.png');
+  background-position: left -3.2rem;
+  margin: 2rem 7rem 0rem 0rem;
+}
+.song-icon-start {
+  float: left;
+  width: 6.75rem;
+  height: 6.75rem;
+  background-image: url('jingling.png');
+  background-position: -3.7rem top;
+}
+.song-icon-next {
+  float: left;
+  width: 2.95rem;
+  height: 2.65rem;
+  background-image: url('jingling.png');
+  background-position: left -7.1rem;
+  margin: 2rem 9.9rem 0rem 7rem;
+}
+.song-icon-list {
+  float: left;
+  width: 2.8rem;
+  height: 2.45rem;
+  background-image: url('jingling.png');
+  background-position: left -11.1rem;
+  margin-top: 2rem;
+}

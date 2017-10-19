@@ -1,0 +1,163 @@
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+#box {
+  width: 62.1rem;
+  background: #fff;
+}
+.header {
+  width: 100%;
+  padding-top: 1.2rem;
+  height: 6.1rem;
+  margin-top: 3.5rem;
+}
+.sousuo {
+  float: left;
+  width: 45.8rem;
+  height: 4.45rem;
+  padding-top: 1.2rem;
+  padding-left: 6.4rem;
+  margin-left: 7.85rem;
+  border-radius: 2rem;
+  text-align: center;
+  background: #ebebeb;
+}
+.sousuo-icon {
+  float: left;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: red;
+}
+.sousuo-text {
+  float: left;
+  width: 34.4rem;
+  height: 1.9rem;
+  font-size: 1.85rem;
+  margin-left: 2.25rem;
+  background: #ebebeb;
+}
+.bofang-icon {
+  float: left;
+  width: 2.7rem;
+  height: 3.1rem;
+  margin-top: 0.25rem;
+  margin-left: 2.5rem;
+  background: red;
+}
+.dianfengbang {
+  width: 62.1rem;
+  height: 7.5rem;
+  line-height: 7.5rem;
+  text-align: center;
+  font-size: 2.6rem;
+}
+.item-title {
+  height: 10rem;
+}
+.item-title-text {
+  padding-left: 1.85rem;
+  padding-top: 1.5rem;
+  font-weight: bold;
+  font-size: 3rem;
+}
+.bangdancontent {
+  padding-left: 1.85rem;
+  padding-right: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+.bangdan-item {
+  width: 75rem;
+  margin-bottom: 2.5rem;
+}
+.bangdan-item dt {
+  float: left;
+  width: 15.9rem;
+  height: 15.9rem;
+  border-radius: 0.75rem;
+  margin-right: 2.5rem;
+}
+.bangdan-item dd {
+  float: left;
+  width: 42rem;
+  height: 15.9rem;
+}
+.bangdan-item img {
+  width: 15.9rem;
+  height: 15.9rem;
+  border-radius: 0.75rem;
+}
+.bangdan-ul {
+  padding-top: 2rem;
+  position: relative;
+}
+.bangdan-item-title {
+  height: 5rem;
+}
+.bangdan-geming,
+.bangdan-number,
+.bangdan-singer,
+.gang {
+  float: left;
+  font-size: 1.9rem;
+}
+.bangdan-number,
+.bangdan-geming {
+  color: #444444;
+}
+.bangdan-singer,
+.gang {
+  color: #a6a6a6;
+}
+.bangdan-number,
+.gang {
+  margin-right: 0.8rem;
+}
+.bangdan-geming {
+  margin-right: 1.5rem;
+}
+.jiantou {
+  position: absolute;
+  right: 2rem;
+  top: 7rem;
+  width: 1.5rem;
+  height: 2rem;
+  background-image: url(jiantou.png);
+}
+.quanqiubang {
+  margin-bottom: 2.5rem;
+}
+.quanqiubang-item {
+  padding-left: 1.85rem;
+  padding-right: 1.8rem;
+  overflow: hidden;
+}
+.quanqiubang-gedan {
+  width: 75rem;
+}
+.quanqiubang-gedan-item {
+  float: left;
+  width: 11.9rem;
+  margin-right: 11.3rem;
+}
+.quanqiubang-gedan-item img {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 0.75rem;
+}
+.quanqiubang-gedan-item-title {
+  width: 12rem;
+  font-size: 1.9rem;
+  color: #939393;
+  margin-top: 1.5rem;
+  margin-bottom: 1.85rem;
+}
+.quanqiubang-gedan li {
+  margin-bottom: 1.5rem;
+}

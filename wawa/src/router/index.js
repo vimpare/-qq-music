@@ -1,16 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-
+import Bofang from '@/components/bofang'
+import Gen from '@/components/gen'
+import Paihang from '@/components/paihang'
+import App from '../App'
 
 Vue.use(Router)
 
 
 export default new Router({
+  mode:'history',
   routes: [
-    // {
-    //   // path: '/paihang',  // 路径
-    //   // component: Home // 对应的组件
-    // }
+    {
+      path: '/',  // 路径
+      component:Gen  // 对应的组件
+    },
+    {
+      path: '/bofang',  // 路径
+      component: Bofang // 对应的组件
+    },
+    {
+      path: '/paihang',  // 路径
+      component: Paihang // 对应的组件
+    }
   ]
 })
