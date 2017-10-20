@@ -48,31 +48,11 @@
                 paihang: {}
             }
         },
-        computed:{
-            singernames(){              
-                this.paihang.forEach(function(item){
-                    let html='';
-                    item.data.singer.forEach(function(item){
-                        html+=item.name+'/'
-                    })
-                   console.log(html)
-                   item.miaov=html
-                })
-
-              
-            }
-        },
+       
         mounted: function() {
             console.log(123)
             let that = this
-            jsonp(`https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_opt.fcg?page=index&format=html&tpl=macv4&v8debug=1`,
-            {
-                param: 'jsonCallback'
-
-            },function(err,data){
-                console.log(data)       
-            });
-
+            
         }
     }
 </script>

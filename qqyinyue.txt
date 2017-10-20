@@ -1,8 +1,11 @@
+10月18日
+
 1、qq音乐接口
 https://u.y.qq.com/cgi-bin/musicu.fcg?callback=recom5587300164067224&g_tk=5381&jsonpCallback=recom5587300164067224&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data=%7B%22comm%22%3A%7B%22ct%22%3A24%7D%2C%22category%22%3A%7B%22method%22%3A%22get_hot_category%22%2C%22param%22%3A%7B%22qq%22%3A%22%22%7D%2C%22module%22%3A%22music.web_category_svr%22%7D%2C%22recomPlaylist%22%3A%7B%22method%22%3A%22get_hot_recommend%22%2C%22param%22%3A%7B%22async%22%3A1%2C%22cmd%22%3A2%7D%2C%22module%22%3A%22playlist.HotRecommendServer%22%7D%2C%22playlist%22%3A%7B%22method%22%3A%22get_playlist_by_category%22%2C%22param%22%3A%7B%22id%22%3A8%2C%22curPage%22%3A1%2C%22size%22%3A40%2C%22order%22%3A5%2C%22titleid%22%3A8%7D%2C%22module%22%3A%22playlist.PlayListPlazaServer%22%7D%2C%22new_song%22%3A%7B%22module%22%3A%22QQMusic.MusichallServer%22%2C%22method%22%3A%22GetNewSong%22%2C%22param%22%3A%7B%22type%22%3A0%7D%7D%2C%22new_album%22%3A%7B%22module%22%3A%22QQMusic.MusichallServer%22%2C%22method%22%3A%22GetNewAlbum%22%2C%22param%22%3A%7B%22type%22%3A0%2C%22category%22%3A%22-1%22%2C%22genre%22%3A0%2C%22year%22%3A1%2C%22company%22%3A-1%2C%22sort%22%3A1%2C%22start%22%3A0%2C%22end%22%3A39%7D%7D%2C%22toplist%22%3A%7B%22module%22%3A%22music.web_toplist_svr%22%2C%22method%22%3A%22get_toplist_index%22%2C%22param%22%3A%7B%7D%7D%2C%22focus%22%3A%7B%22module%22%3A%22QQMusic.MusichallServer%22%2C%22method%22%3A%22GetFocus%22%2C%22param%22%3A%7B%7D%7D%7D
 
 jsonp安装： nmp i jsonp -save
 
+jsonp中的this不再指向实例，所以需要改变jsonp里面的this指向实例 let that = this  
 jsonp相当于ajax请求的片段：
 
 jsonp(`https://c.y.qq.com/v8/fcg-bin/getmv_by_tag?g_tk=328229838&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=GB2312&notice=0&platform=yqq&needNewCode=0&cmd=shoubo&lan=all`,
@@ -39,3 +42,38 @@ import iView from 'iview';
 vue use(iview)//使用iview插件
 
 5、谷歌翻墙，安装web前端助手插件
+web前端助手，使用是直接将resquest url 的地址复制到浏览器的地址栏
+6、:src="item.cover"
+
+10月19日
+1、路由写跳转路径
+<router-view/>这个要在App里面写，App里面不能有结构等东西，在router下面的index.js里面import引入相应的组件，然后写path路径，从根路径写起
+2、播放器页面接口没找到？？？？？？？
+
+3、排行榜接口：https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&date=2017-10-18&topid=4&type=top&song_begin=0&song_num=30&g_tk=5381&jsonpCallback=MusicJsonCallbacktoplist&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+jsonp地址：https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&date=2017-10-18&topid=4&type=top&song_begin=0&song_num=30&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+需要加上
+{
+      param: 'jsonpCallback'
+    }？？？？？
+起作用的是callback ，那么删掉 param: 'jsonpCallback'，默认是callback，如果不是callback就写上 param: 'jsonpCallback'，并将url里面的jsonpCallback，callback删掉，
+
+4、Error: listen EADDRINUSE :::8080 
+错误为：80端口冲突 解决方法：改端口 在config-index.js 下面的8080改成8081
+ dev: {
+    env: require('./dev.env'),
+    port: process.env.PORT || 8081,
+    autoOpenBrowser: true,
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {},
+    // CSS Sourcemaps off by default because relative paths are "buggy"
+    // with this option, according to the CSS-Loader README
+    // (https://github.com/webpack/css-loader#sourcemaps)
+    // In our experience, they generally work as expected,
+    // just be aware of this issue when enabling this option.
+    cssSourceMap: false
+  }
+
+5、在运行或者终端里面看错误 看下css的里面的图片的url对不对
+6、css在main.js中引入，App.vue里面<router-view/>必不可少，是路由用的

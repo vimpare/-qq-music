@@ -65,17 +65,17 @@
         },
         mounted: function() {
             let that = this
-        jsonp(`https://u.y.qq.com/cgi-bin/musicu.fcg?loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data={"recomPlaylist":{"method":"get_hot_recommend","param":{"async":1,"cmd":2},"module":"playlist.HotRecommendServer" 
-    }}
-    `,
-        {
-        
-        },function(err,data){
-        console.log(data)
-        that.articles=data.recomPlaylist.data.v_hot.splice(0,6);
-        console.log(that.articles)
-        
-        });
+            jsonp(`https://u.y.qq.com/cgi-bin/musicu.fcg?loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data={"recomPlaylist":{"method":"get_hot_recommend","param":{"async":1,"cmd":2},"module":"playlist.HotRecommendServer" 
+        }}
+        `,
+            {
+            
+            },function(err,data){
+            console.log(data)
+            that.articles=data.recomPlaylist.data.v_hot.splice(0,6);
+            console.log(that.articles)
+            
+            });
 
         }
     }

@@ -8,6 +8,9 @@ import './assets/yinyuecss/reset.css'
 import './assets/yinyuecss/index.css'
 import './assets/bofangcss/index.css'
 import './assets/paihangcss.css'
+import './assets/paihangxiang.css'
+import './assets/geshou.css'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

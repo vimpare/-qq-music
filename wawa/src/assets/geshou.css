@@ -1,0 +1,85 @@
+#paihangbox {
+  width: 62.1rem;
+  background: #fff;
+}
+.header {
+  width: 100%;
+  padding-top: 1.2rem;
+  height: 6.1rem;
+  margin-top: 3.5rem;
+  position: fixed;
+}
+.header p {
+  float: left;
+  font-size: 2.5rem;
+  width: 50rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.fanhui-icon {
+  float: left;
+  width: 1.2rem;
+  height: 2rem;
+  background: red;
+  margin-left: 2.8rem;
+  margin-top: 0.8rem;
+}
+.bofang-icon {
+  float: right;
+  width: 3rem;
+  height: 2.3rem;
+  margin-top: 0.25rem;
+  margin-right: 1.95rem;
+  background: red;
+  margin-top: 0.8rem;
+}
+.singer-fenlei {
+  width: 100%;
+  padding-top: 9.6rem;
+}
+.singer-fenlei > li {
+  width: 200%;
+  border-bottom: 0.05rem solid #e6e6e6;
+  font-size: 2.5rem;
+}
+.singer-fenlei ul li {
+  float: left;
+  line-height: 5.8rem;
+}
+.singer-fenlei ul li a {
+  margin: 0 2.65rem;
+  border-bottom: 0.1rem solid #000000;
+}
+.singer-list dt,
+.singer-list-name {
+  float: left;
+}
+.singer-list-image img{
+  width:9rem;
+  height: 9rem;
+}
+.singer-list dt {
+  width: 9rem;
+  height: 9rem;
+  margin-top: 1rem;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.singer-list li {
+  padding-top: 1rem;
+  padding-bottom: 0.85rem;
+  padding-left: 2rem;
+}
+.singer-list-name {
+  line-height: 11rem;
+  font-size: 2.25rem;
+  margin-left: 2rem;
+}
+.singer-list-icon {
+  float: right;
+  margin-right: 1.8rem;
+  width: 1.3rem;
+  height: 2rem;
+  margin-top: 4.3rem;
+  background: red;
+}
