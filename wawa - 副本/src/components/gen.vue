@@ -7,7 +7,12 @@
                 </div>
                 <span class="bofang-icon"></span>
             </div>
-            <Lunbo></Lunbo>         
+            <div class="banner">
+                <div class="banner-imgs">
+                    <img src="../assets/yinyuecss/bnner.png">
+                </div>
+            </div>
+           
             <ul class="list-init clearfix">
                 <li>
                     <div class="bg"></div>
@@ -41,7 +46,6 @@
                         <dl class="gedan-item">
                             <dt><img :src="item.cover"></dt>
                             <dd class="gedan-item-title">{{item.title}}</dd>
-                            <dd class="gedan-item-liang">播放量：{{(item.listen_num/10000).toFixed(1)+'万'}}</dd>
                         </dl>
                     </li>
                    
@@ -50,17 +54,14 @@
         </div>
 </template>
 <script>
-    import Lunbo from './lunbo'
     var jsonp = require('jsonp');
     var data={}
-    export default {       
+    export default {
+        
         data() {
             return {          
                 articles: {}
             }
-        },
-        components:{
-            Lunbo
         },
         mounted: function() {
             let that = this

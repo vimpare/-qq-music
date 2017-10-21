@@ -3,11 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import $ from 'jquery'
-import Swiper from 'swiper'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper)
-import './assets/swiper.min.css'
+
 import './assets/yinyuecss/reset.css'
 import './assets/yinyuecss/index.css'
 import './assets/bofangcss/index.css'

@@ -1,12 +1,19 @@
 
 
 <template>
-   <div>11</div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ><img src="../assets/yinyuecss/bnner.png"></div>
+            <div class="swiper-slide"><img src="../assets/yinyuecss/bnner.png"></div>
+            <div class="swiper-slide"><img src="../assets/yinyuecss/bnner.png"></div>
+        </div>
+        <div class="swiper-pagination swiper-pagination-white"></div>
+    </div>
 </template>
 
 <script>
 
-    import Swiper from 'swiper'
+    import Swiper from 'swiper';
     var jsonp = require('jsonp');
     export default {
         data(){

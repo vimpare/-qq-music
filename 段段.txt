@@ -1,0 +1,8 @@
+1.�ֲ�ͼ�ӿڣ�
+https://u.y.qq.com/cgi-bin/musicu.fcg?loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data={%22focus%22:{%22module%22:%22QQMusic.MusichallServer%22,%22method%22:%22GetFocus%22,%22param%22:{}}}
+
+
+
+
+
+

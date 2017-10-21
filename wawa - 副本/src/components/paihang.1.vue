@@ -74,7 +74,6 @@
 
         }
     }
-    //https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_opt.fcg?page=index&format=html
 </script>
 
 <style>

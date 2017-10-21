@@ -7,14 +7,14 @@
             </div>
             <div class="bangdancontent">
             	<dl class="bangdan-item clearfix">
-            		<dt><img src=""/></dt>
+            		<dt><img src="http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_4_300_204505031.jpg"/></dt>
             		<dd>
             			<ul class="bangdan-ul">
-            				<li class="bangdan-item-title" v-for="item,index in paihang">
-            					<span class="bangdan-number">1</span>
-            					<a href="#" class="bangdan-geming">{{item.data.songname}}</a>
+            				<li class="bangdan-item-title">
+            					<span class="bangdan-number">{{}</span>
+            					<a href="#" class="bangdan-geming">{{}}</a>
             					<a href="#" class="gang">-</a>
-            					<a href="#" class="bangdan-singer">{{item.miaov}}</a>
+            					<a href="#" class="bangdan-singer">{{}}</a>
             				</li>
             				
             				<li class="jiantou"></li>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+
     var jsonp = require('jsonp');
     var data={}
     export default {
@@ -49,10 +50,15 @@
             }
         },
        
-        mounted: function() {
+         mounted: function() {
             console.log(123)
-            let that = this
+            var url = "https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_opt.fcg?page=index&format=html&tpl=macv4&v8debug=1&jsonCallback=jsonCallback"; 
+            $.getJSON(url, function(data){ 
+          
+                console.log(data)
+            });
             
+
         }
     }
 </script>
