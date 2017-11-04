@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import $ from 'jquery'
+
 
 import './assets/yinyuecss/reset.css'
 import './assets/yinyuecss/index.css'
@@ -10,7 +12,7 @@ import './assets/bofangcss/index.css'
 import './assets/paihangcss.css'
 import './assets/paihangxiang.css'
 import './assets/geshou.css'
-
+import './assets/swiper.min.css'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

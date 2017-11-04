@@ -8,6 +8,7 @@
 			<div class="singer-xiang-title"><span class="paihangbofang"></span>播放全部</div>
 			<ol class="singer-xiang-list paihang-list">
 				<li class="clearfix" v-for="item,index in paihangx">
+                    <div class="singer-xiang-item-image"><img :src="getmid(item.data.albummid)"></div>
 					<div class="singer-xiang-item">
 						<p class=singer-xiang-item-song>{{item.data.songname}}</p>
 						<p class=singer-xiang-item-zhuanji>{{item.data.singer[0].name}}</p>
@@ -29,19 +30,17 @@
                 paihangx: {}
             }
         },
-        computed:{
-            singernames(){              
-                this.paihang.forEach(function(item){
-                    let html='';
-                    item.data.singer.forEach(function(item){
-                        html+=item.name+'/'
-                    })
-                   console.log(html)
-                   item.miaov=html
-                })
-
-              
+        methods:{
+            getmid(id){              
+                let src='';
+                src='https://y.gtimg.cn/music/photo_new/T002R90x90M000'+id+'.jpg?max_age=2592000'
+                return src           
+            },
+            getBigimg(id){
+                let src='';
+                src='https://y.gtimg.cn/music/photo_new/T002R90x90M000002W7K2D0LxJJR.jpg?max_age=2592000'
             }
+
         },
         mounted: function() {
             console.log(123)
