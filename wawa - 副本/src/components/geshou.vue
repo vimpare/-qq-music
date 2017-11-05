@@ -40,11 +40,13 @@
 				</li>
 			</ul>
 			<ul class="singer-list">
-				<li v-for="item,index in singer">
+				<li v-for="item,index in singer" @click="togeshoux(item.Fsinger_mid)">
 					<dl class="clearfix">
-						<dt class="singer-list-image"><img :src="getmid(item.Fsinger_mid)"></dt>
-						<dd class="singer-list-name">{{item.Fsinger_name}}</dd>
-						<dd class="singer-list-icon"></dd>
+						<router-link to="/geshoux">
+							<dt class="singer-list-image"><img :src="getmid(item.Fsinger_mid)"></dt>
+							<dd class="singer-list-name">{{item.Fsinger_name}}</dd>
+							<dd class="singer-list-icon"></dd>
+						</router-link>
 					</dl>
 				</li>
 				
@@ -56,6 +58,7 @@
 <script>
     var jsonp = require('jsonp');
     var data={}
+	var bus = new Vue()
     export default {
         
         data() {
@@ -69,7 +72,11 @@
                 let src='';
                 src='https://y.gtimg.cn/music/photo_new/T001R150x150M000'+id+'.jpg?max_age=2592000'
                 return src           
-            }
+            },
+			togeshoux(mid){
+
+
+			}
         },
         mounted: function() {
             console.log(123)

@@ -16,25 +16,32 @@
            
             <ul class="list-init clearfix">
                 <li>
-                    <div class="bg"></div>
-                    <div class="list-li-name">
-                        <p>排行</p>
-                        <p class="list-li-name-ying">RADIO</p>
-                    </div>
+                    <router-link to="/paihang">
+                        <div class="bg"></div>
+                        <div class="list-li-name">
+                            <p>排行</p>
+                            <p class="list-li-name-ying">RADIO</p>
+                        </div>
+                    </router-link>
+                    
                 </li>
                 <li>
-                    <div class="bg"></div>
-                    <div class="list-li-name">
-                        <p>歌手</p>
-                        <p class="list-li-name-ying">ARTIST</p>
-                    </div>
+                    <router-link to="/geshou">
+                        <div class="bg"></div>
+                        <div class="list-li-name">
+                            <p>歌手</p>
+                            <p class="list-li-name-ying">ARTIST</p>
+                        </div>
+                    </router-link>
                 </li>
                 <li>
-                    <div class="bg"></div>
-                    <div class="list-li-name">
-                        <p>分类</p>
-                        <p class="list-li-name-ying">MUSIC</p>
-                    </div>
+                    <router-link to="/geshou">
+                        <div class="bg"></div>
+                        <div class="list-li-name">
+                            <p>分类</p>
+                            <p class="list-li-name-ying">MUSIC</p>
+                        </div>
+                    </router-link>
                 </li>
             </ul>
             <div class="item">

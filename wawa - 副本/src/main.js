@@ -13,6 +13,7 @@ import './assets/paihangcss.css'
 import './assets/paihangxiang.css'
 import './assets/geshou.css'
 import './assets/swiper.min.css'
+import './assets/gedanxiang.css'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

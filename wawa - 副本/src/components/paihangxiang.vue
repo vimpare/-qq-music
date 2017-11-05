@@ -11,7 +11,9 @@
                     <div class="singer-xiang-item-image"><img :src="getmid(item.data.albummid)"></div>
 					<div class="singer-xiang-item">
 						<p class=singer-xiang-item-song>{{item.data.songname}}</p>
-						<p class=singer-xiang-item-zhuanji>{{item.data.singer[0].name}}</p>
+					
+                        <p class=singer-xiang-item-zhuanji>{{item.data.singer[0].name}}·{{
+                        item.data.albumname}}{{item.data.albumdesc?'·'+item.data.albumdesc:''}}</p>
 					</div>
 					<span class="singer-xiang-item-icon"></span>
 				</li>
