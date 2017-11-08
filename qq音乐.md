@@ -159,3 +159,43 @@ http://music.qq.com/miniportal/static/lyric/10/4900010.xml
 http://music.qq.com/miniportal/static/lyric/45/205603045.xml----------不可用
 
 5
+router-link 
+<router-link> 组件支持用户在具有路由功能的应用中（点击）导航。 通过 to 属性指定目标地址，默认渲染成带有正确链接的 <a> 标签，可以通过配置 tag 属性生成别的标签.。另外，当目标路由成功激活时，链接元素自动设置一个表示激活的 CSS 类名。
+
+    <router-link to="/geshou">
+        <div class="bg"></div>
+        <div class="list-li-name">
+            <p>歌手</p>
+            <p class="list-li-name-ying">ARTIST</p>
+        </div>
+    </router-link>
+    
+6
+歌单地址
+https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?type=1&json=1&utf8=1&onlysong=0&disstid=2687351885&format=jsonp&g_tk=5381&jsonpCallback=playlistinfoCallback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+无法获取
+7，
+薛之谦：
+https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?g_tk=5381&jsonpCallback=MusicJsonCallbacksinger_track&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&singermid=002J4UUk29y8BY&order=listen&begin=0&num=30&songstatus=1
+
+{
+"Farea": "1",
+"Fattribute_3": "3",
+"Fattribute_4": "0",
+"Fgenre": "0",
+"Findex": "X",
+"Fother_name": "Joker",
+"Fsinger_id": "5062",
+"Fsinger_mid": "002J4UUk29y8BY",
+"Fsinger_name": "薛之谦",
+"Fsinger_tag": "541,555",
+"Fsort": "1",
+"Ftrend": "0",
+"Ftype": "0",
+"voc": "0"
+},
+
+头像地址：
+https://y.gtimg.cn/music/photo_new/T001R300x300M000002J4UUk29y8BY.jpg?max_age=2592000
+
+通过mid关联

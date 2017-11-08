@@ -40,8 +40,8 @@
 				</li>
 			</ul>
 			<ul class="singer-list">
-				<li v-for="item,index in singer" @click="togeshoux(item.Fsinger_mid)">
-					<dl class="clearfix">
+				<li v-for="item,index in singer" >
+					<dl class="clearfix" @touchstart="togeshoux(item)">
 						<router-link to="/geshoux">
 							<dt class="singer-list-image"><img :src="getmid(item.Fsinger_mid)"></dt>
 							<dd class="singer-list-name">{{item.Fsinger_name}}</dd>
@@ -58,7 +58,7 @@
 <script>
     var jsonp = require('jsonp');
     var data={}
-	var bus = new Vue()
+	
     export default {
         
         data() {
@@ -73,8 +73,9 @@
                 src='https://y.gtimg.cn/music/photo_new/T001R150x150M000'+id+'.jpg?max_age=2592000'
                 return src           
             },
-			togeshoux(mid){
-
+			togeshoux(item){
+				this.$store.commit('getmid', item)
+				
 
 			}
         },

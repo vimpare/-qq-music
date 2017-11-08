@@ -130,6 +130,7 @@ body{
 .gedan-item-title {
   font-size: 2.3rem;
   margin-top: 1.5rem;
+  min-height: 6.1rem;
   margin-bottom: 1.85rem;
 }
 .gedan li {

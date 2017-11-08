@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Vuex from 'vuex'
 import Bofang from '@/components/bofang'
 import Gen from '@/components/gen'
 import Paihang from '@/components/paihang'
@@ -10,7 +11,7 @@ import Geshoux from '@/components/geshoux'
 import App from '../App'
 
 Vue.use(Router)
-
+Vue.use(Vuex)
 
 export default new Router({
   mode:'history',
