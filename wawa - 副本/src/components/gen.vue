@@ -7,10 +7,10 @@
                 </div>
                 <span class="bofang-icon"></span>
             </div>
-             <Lunbo></Lunbo> 
+             
             <div class="banner">
                 <div class="banner-imgs">
-                    <img src="../assets/yinyuecss/bnner.png">
+                    <Lunbo></Lunbo>
                 </div>
             </div>
            

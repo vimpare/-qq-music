@@ -5,7 +5,15 @@ import App from './App'
 import router from './router'
 import $ from 'jquery'
 import store from './store'
+import MintUI from 'mint-ui'
+import { Swipe, SwipeItem } from 'mint-ui';
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
+import { Progress } from 'mint-ui';
+
+Vue.component(Progress.name, Progress);
+import 'mint-ui/lib/style.css'
 import './assets/yinyuecss/reset.css'
 import './assets/yinyuecss/index.css'
 import './assets/bofangcss/index.css'
@@ -22,6 +30,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  MintUI,
   template: '<App/>',
   components: { App }
 })

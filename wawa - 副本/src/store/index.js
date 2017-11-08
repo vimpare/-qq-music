@@ -6,8 +6,10 @@ Vue.use(Vuex)
 
 let store = new Vuex.Store({
   state: {
-    singermid:'',
-    singername:''
+    singermid:'002J4UUk29y8BY',
+    singername:'',
+    songmid:'',
+    albummid:'',
   },
   mutations: {
    getmid:function(state, obj){

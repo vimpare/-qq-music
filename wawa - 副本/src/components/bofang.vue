@@ -7,7 +7,7 @@
             </div>
             <div class="mod-song">
 				<dl>
-					<dt><img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000003L8x7x0flFPW.jpg?max_age=2592000"></dt>
+					<dt><img :src="imgsrc"></dt>
 					<dd>
 						<p class="mod-song-name">静夜思</p>
 						<p class="mod-song-singer">白天不亮</p>
@@ -25,10 +25,12 @@
 					<span class="song-icon-pinglun"></span>
 					<span class="song-icon-more"></span>
 				</div>
+				
 				<div class="jindu clearfix">
-					<span class="start-time">04:18</span>
-					<div class="jindu-tiao"><span class="jindu-bianse"></span></div>
-					<span class="jieshu-time">05:47</span>
+					<mt-progress :value="60">
+						<div slot="start">04:18</div>
+						<div slot="end">05:47</div>
+					</mt-progress>									
 				</div>
 
 				<div class="song-icon clearfix">
@@ -52,18 +54,23 @@
     export default {
 		 data() {
             return {          
-                lyric: {}
+                lyric: {},
+				imgsrc:''
             }
+        },
+		 methods:{
+            
+			
         },
         mounted: function() {
             let that = this
-            jsonp(`https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg?pcachetime=1509776220636&songmid=003avUdD2Iwk2d&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+            jsonp(`https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg?albummid=003UdczR02zr72&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
         `,
             {
-            
+             param: 'jsonpCallback'
             },function(err,data){
-            console.log(data)
-           
+            console.log(data.data.mid)
+			that.imgsrc='https://y.gtimg.cn/music/photo_new/T002R300x300M000'+data.data.mid+'.jpg?max_age=2592000'
             
             });
 
