@@ -8,25 +8,29 @@ let store = new Vuex.Store({
   state: {
     singermid:'002J4UUk29y8BY',
     singername:'',
-    songmid:'',
+    songid:'',
     albummid:'',
+    songState:{
+      playingState: 'pause'
+    }
+
   },
   mutations: {
    getmid:function(state, obj){
     console.log('我被触发了')
     state.singermid=obj.Fsinger_mid
     state.singername=obj.Fsinger_name
-   }
+   },
+   pause(state, status) {
+    let songid = state.songid;
+    state.songState.playingState = status == 'pause' || songid == null ? 'pause' : 'playing' + songid;
+  },
+    getsongid:function(state, songid){
+      state.songid=songid
+    }
   },
   actions: {
-    // getmid:function(state, mid){
-    //   console.log('我被触发了')
-    //   state.singermid=mid
-    //   console.log(state.singermid)
-    //  }
-    // getmid (context) {
-    //   context.commit('getmid')
-    // }
+   
   }
 })
 

@@ -10,7 +10,14 @@ import { Swipe, SwipeItem } from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 
+import { IndexList, IndexSection } from 'mint-ui';
+Vue.component(IndexList.name, IndexList);
+Vue.component(IndexSection.name, IndexSection);
+
 import { Progress } from 'mint-ui';
+
+import utils from './utils/utils'
+Vue.use(utils);
 
 Vue.component(Progress.name, Progress);
 import 'mint-ui/lib/style.css'

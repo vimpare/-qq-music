@@ -39,6 +39,11 @@
 					</ul>
 				</li>
 			</ul>
+			<mt-index-list :show-indicator="false">
+			  <mt-index-section :index="itemAll.name" v-for="(itemAll, key) in singerlistAll" >
+			  
+			  </mt-index-section>
+			</mt-index-list>
 			<ul class="singer-list">
 				<li v-for="item,index in singer" >
 					<dl class="clearfix" @touchstart="togeshoux(item)">
@@ -52,19 +57,38 @@
 				
 				
 			</ul>
-        </div>
+			
+	</div>
 </template>
 
 <script>
     var jsonp = require('jsonp');
     var data={}
-	
+	const letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+	 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	 const loop = function() {
+		let arr = [];
+		letter.forEach(item => arr.push({
+			name: item,
+			index: item,
+			singerlist: []
+		}));
+		return arr;
+	};
+	const singerlistArr = [
+		{
+			name: '热门',
+			index: 'all',
+			singerlist: []
+		},
+		...loop()
+	];
     export default {
         
         data() {
             return {          
                 singer: {},
-               
+				singerlistAll: {}
             }
         },
         methods:{
@@ -92,12 +116,20 @@
                 that.singer=data.data.list;
                 
             });
-
+			let i = 0,
+				self = this,
+				len = singerlistArr.length;
+			
+			this.singerlistAll = singerlistArr;
+			
         }
     }
 </script>
 
 <style>
-
+.mint-indexlist{
+	position:fixed;
+	z-index:999;
+}
 
 </style>

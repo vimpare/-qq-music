@@ -199,3 +199,12 @@ https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?g_tk=5381&jsonpCallback
 https://y.gtimg.cn/music/photo_new/T001R300x300M000002J4UUk29y8BY.jpg?max_age=2592000
 
 通过mid关联
+
+--------------
+韩国歌手：
+https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&key=k_man_all&pagesize=100&pagenum=1&g_tk=5381&jsonpCallback=GetSingerListCallback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&key=k_woman_all&pagesize=100&pagenum=1&g_tk=5381&jsonpCallback=GetSingerListCallback&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+-----------------------------
+
+轮播图：
+https://u.y.qq.com/cgi-bin/musicu.fcg?loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data={"comm":{"ct":24},"focus":{"module":"QQMusic.MusichallServer","method":"GetFocus","param":{}}}
