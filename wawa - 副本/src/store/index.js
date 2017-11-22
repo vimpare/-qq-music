@@ -6,18 +6,25 @@ Vue.use(Vuex)
 
 let store = new Vuex.Store({
   state: {
+    songMsg:{
+      data:{}
+    },
     singermid:'002J4UUk29y8BY',
     singername:'',
     songid:'',
     albummid:'',
     songState:{
-      playingState: 'pause'
+      playingState: 'pause',
+      playingProgress: 0,
+      current:0,
+      timing:0
     }
 
   },
   mutations: {
    getmid:function(state, obj){
     console.log('我被触发了')
+    state.songMsg.data=obj
     state.singermid=obj.Fsinger_mid
     state.singername=obj.Fsinger_name
    },
@@ -26,11 +33,17 @@ let store = new Vuex.Store({
     state.songState.playingState = status == 'pause' || songid == null ? 'pause' : 'playing' + songid;
   },
     getsongid:function(state, songid){
-      state.songid=songid
+      state.songid=songid    
     }
   },
   actions: {
-   
+    resetProgress({state,commit,dispatch},payload={currentTime: 0, duration: 0}){
+      let current = parseInt(payload.currentTime) || 0,
+          timing = parseInt(payload.duration) || 0;
+          state.songState.playingProgress = current/timing;
+					state.songState.current = current;
+					state.songState.timing = timing;
+   }
   }
 })
 

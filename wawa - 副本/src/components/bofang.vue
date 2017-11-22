@@ -7,10 +7,15 @@
             </div>
             <div class="mod-song">
 				<dl>
-					<dt><img :src="imgsrc"></dt>
+					<dt>
+						<img 
+							:src="getImgsrc()"
+							:class="{'spin': playingState != 'pause'}">
+						
+					</dt>
 					<dd>
-						<p class="mod-song-name">静夜思</p>
-						<p class="mod-song-singer">白天不亮</p>
+						<p class="mod-song-name">{{$store.state.songMsg.data.musicData.songname}}</p>
+						<p class="mod-song-singer">{{$store.state.songMsg.data.musicData.singer[0].name}}</p>
 					</dd>
 				</dl>
 				<div class="songlyric">
@@ -18,7 +23,10 @@
 				</div>
                 <audio id="bgMusic"  
 					ref="audio"
-					src="http://dl.stream.qqmusic.qq.com/C400003avUdD2Iwk2d.m4a?fromtag=66" type="audio/mp3" controls>
+					:src="getMedia()" 
+					type="audio/mp3"
+					@timeupdate="_playProgress"
+					>
 				</audio>
 				<div class="song-item-icon clearfix">
 					<span class="song-icon-xihuan"></span>
@@ -28,9 +36,9 @@
 				</div>
 				
 				<div class="jindu clearfix">
-					<mt-progress :value="60">
-						<div slot="start">04:18</div>
-						<div slot="end">05:47</div>
+					<mt-progress :value="playingProgress*100">
+						<div slot="start" class="playing-current">{{playingCurrent}}</div>
+						<div slot="end" class="playing-timing">{{playingTiming}}</div>
 					</mt-progress>									
 				</div>
 
@@ -39,7 +47,7 @@
 					<span class="song-icon-prev"></span>
 					<span 
 						:class="playingState == 'pause' ? 'song-icon-pause' : 'song-icon-start'"
-						@click="pause(playingState == 'pause' ? '' : 'pause')"></span>
+						@touchstart="pause(playingState == 'pause' ? '' : 'pause')"></span>
 					<span class="song-icon-next"></span>
 					<span class="song-icon-list"></span>
 				</div>
@@ -65,10 +73,36 @@
 		computed:{
 			playingState() {
 				return this.$store.state.songState.playingState	
+			},
+			playingCurrent(){
+				let current=this.$store.state.songState.current;
+				return parseInt(current/60)+':'+current%60
+			},
+			playingTiming(){
+				let timing=this.$store.state.songState.timing
+				return parseInt(timing/60)+':'+timing%60
+			},
+			playingProgress(){
+				return this.$store.state.songState.playingProgress
 			}
+
 		},
 		 methods:{
-            ...mapMutations(['pause'])
+            ...mapMutations(['pause']),
+			getMedia(){
+				let songid=this.$store.state.songid
+				return 'http://dl.stream.qqmusic.qq.com/'+songid+'.m4a?fromtag=66'
+			},
+			getImgsrc(){
+				let albummid=this.$store.state.songMsg.data.musicData.albummid;	
+				 return 'https://y.gtimg.cn/music/photo_new/T002R300x300M000'+albummid+'.jpg?max_age=2592000'
+			},
+			_playProgress(e) {
+				let audio = e.target,
+					currentTime = audio.currentTime,
+					duration = audio.duration;				
+				this.$store.dispatch('resetProgress', {currentTime, duration});
+			},
 			
         },
 		watch:{
@@ -79,23 +113,17 @@
 					audio.pause()
 				}else {
 					audio.play()
+					console.log(audio.currentTime,audio.duration)
 				}
 			}
 			
 		},
-        mounted: function() {
-            let that = this
-            jsonp(`https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg?albummid=003UdczR02zr72&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
-        `,
-            {
-             param: 'jsonpCallback'
-            },function(err,data){
-           
-			that.imgsrc='https://y.gtimg.cn/music/photo_new/T002R300x300M000'+data.data.mid+'.jpg?max_age=2592000'
+       
+			
             
-            });
+         
 
-        }
+        
     }
 </script>
 <style>
@@ -109,5 +137,24 @@ audio{
   height: 6.75rem;
   background-image: url('../assets/bo.png');
   background-size:6.75rem;
+}
+.playing-current{
+	font-size:2rem;
+	margin-right:1rem;
+}
+.playing-timing{
+	font-size:2rem;
+	margin-left:1rem;
+}
+.spin{
+	 animation: spin 30s linear infinite;
+}
+@keyframes spin{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

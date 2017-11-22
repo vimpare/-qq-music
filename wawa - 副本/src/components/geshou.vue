@@ -39,11 +39,7 @@
 					</ul>
 				</li>
 			</ul>
-			<mt-index-list :show-indicator="false">
-			  <mt-index-section :index="itemAll.name" v-for="(itemAll, key) in singerlistAll" >
-			  
-			  </mt-index-section>
-			</mt-index-list>
+			
 			<ul class="singer-list">
 				<li v-for="item,index in singer" >
 					<dl class="clearfix" @touchstart="togeshoux(item)">

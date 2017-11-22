@@ -8,14 +8,17 @@
 			<div class="singer-xiang-image"><img :src="getmid($store.state.singermid)"></div>
 			<div class="singer-xiang-title">最热歌曲</div>
 			<ol class="singer-xiang-list">
-				<li class="clearfix" v-for="item,index in song">
+				<li class="clearfix" 
+                    v-for="item,index in song"
+                    @touchend="playMusic(item,item.musicData.songid)">
+                    <router-link to="/bofang">
 					<div class="singer-xiang-item">
 						<p class=singer-xiang-item-song>{{item.musicData.songname}}</p>
 						<p class=singer-xiang-item-zhuanji>{{item.musicData.singer[0].name}}·{{
-                        item.musicData.albumname}}{{item.musicData.albumdesc?'·'+item.musicData.albumdesc:''}}</p>
-                       
+                        item.musicData.albumname}}{{item.musicData.albumdesc?'·'+item.musicData.albumdesc:''}}</p>                      
 					</div>
 					<span class="singer-xiang-item-icon"></span>
+                    </router-link>
 				</li>
 				
 			</ol>
