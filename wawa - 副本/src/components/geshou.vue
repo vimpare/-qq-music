@@ -1,9 +1,9 @@
 <template>
   <div id="paihangbox">
             <div class="header clearfix">
-				<span class="fanhui-icon"></span>
+				<Fullback></Fullback>
 				<p>歌手</p>
-                <span class="bofang-icon"></span>
+                <Playing></Playing>
             </div>
             <ul class="singer-fenlei">
 				<li>
@@ -43,7 +43,7 @@
 			<ul class="singer-list">
 				<li v-for="item,index in singer" >
 					<dl class="clearfix" @touchstart="togeshoux(item)">
-						<router-link to="/geshoux">
+						<router-link :to="'/geshoux/'+item.Fsinger_mid">
 							<dt class="singer-list-image"><img :src="getmid(item.Fsinger_mid)"></dt>
 							<dd class="singer-list-name">{{item.Fsinger_name}}</dd>
 							<dd class="singer-list-icon"></dd>
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+	import Fullback from './fallback'
+	import Playing from './playing'
     var jsonp = require('jsonp');
     var data={}
 	const letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
@@ -87,6 +89,7 @@
 				singerlistAll: {}
             }
         },
+		
         methods:{
             getmid(id){              
                 let src='';
@@ -98,6 +101,10 @@
 				
 
 			}
+        },
+		components:{
+            Fullback,
+			Playing
         },
         mounted: function() {
             console.log(123)

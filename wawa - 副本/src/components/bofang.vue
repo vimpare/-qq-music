@@ -2,32 +2,34 @@
     <div>
         <div id="paihangbox">
             <div class="header clearfix">
-                <span class="fanhui-icon"></span>
-                <span class="bofang-icon"></span>
+                <Fullback></Fullback>             
             </div>
             <div class="mod-song">
-				<dl>
-					<dt>
-						<img 
-							:src="getImgsrc()"
-							:class="{'spin': playingState != 'pause'}">
-						
-					</dt>
-					<dd>
-						<p class="mod-song-name">{{$store.state.songMsg.data.musicData.songname}}</p>
-						<p class="mod-song-singer">{{$store.state.songMsg.data.musicData.singer[0].name}}</p>
-					</dd>
-				</dl>
-				<div class="songlyric">
-
+				<div  @touchend="isState()">
+					<dl v-if="willShow" >
+						<dt>
+							<img 
+								:src="getImgsrc()"
+								:class="{'spin': playingState != 'pause'}">
+							
+						</dt>
+						<dd>
+							<p class="mod-song-name">{{$store.state.songMsg.data.musicData.songname}}</p>
+							<p class="mod-song-singer">{{$store.state.songMsg.data.musicData.singer[0].name}}</p>
+						</dd>
+					</dl>
+					<div class="songlyric" v-if="!willShow">
+						<p v-for="(item, key) in lyricsObj.lyricsArr" 
+							>{{ item }}</p>
+					</div>
+					<audio id="bgMusic"  
+						ref="audio"
+						:src="getMedia()" 
+						type="audio/mp3"
+						@timeupdate="_playProgress"
+						>
+					</audio>
 				</div>
-                <audio id="bgMusic"  
-					ref="audio"
-					:src="getMedia()" 
-					type="audio/mp3"
-					@timeupdate="_playProgress"
-					>
-				</audio>
 				<div class="song-item-icon clearfix">
 					<span class="song-icon-xihuan"></span>
 					<span class="song-icon-xiazai"></span>
@@ -57,17 +59,27 @@
 </template>
 <script>
 	//先把页面滚动禁掉
+	import Fullback from './fallback'
 	import { mapState, mapMutations, mapActions } from 'vuex';
+	import { lyricsAnalysis,timeFormat } from '../utils/lyric-utils.js';
 	var jsonp = require('jsonp');
+	var Base64 = require('js-base64').Base64;
 	document.body.addEventListener('touchmove', function (event) {
         event.preventDefault();
     }, false);
 	
     export default {
 		 data() {
-            return {          
+            return {  
+				willShow:true,        
                 lyric: {},
-				imgsrc:''
+				imgsrc:'',
+				currentLyric: '',
+				lyricsObj: {
+				  timeArr: [],       // each lyric start time
+				  lyricsArr: [],    // each item lyric
+				  durationArr: []  // each lyric cost time,
+				}
             }
         },
 		computed:{
@@ -76,19 +88,24 @@
 			},
 			playingCurrent(){
 				let current=this.$store.state.songState.current;
-				return parseInt(current/60)+':'+current%60
+				return timeFormat(current)
 			},
 			playingTiming(){
 				let timing=this.$store.state.songState.timing
-				return parseInt(timing/60)+':'+timing%60
+				
+				return timeFormat(timing)
 			},
 			playingProgress(){
 				return this.$store.state.songState.playingProgress
+			},
+			currentTime(){
+				return this.$store.state.songState.current
 			}
+			
 
 		},
 		 methods:{
-            ...mapMutations(['pause']),
+            ...mapMutations(['pause','switchLyricIndex', 'switchLyricsArr', 'switchLyricDuration']),
 			getMedia(){
 				let songid=this.$store.state.songid
 				return 'http://dl.stream.qqmusic.qq.com/'+songid+'.m4a?fromtag=66'
@@ -103,6 +120,13 @@
 					duration = audio.duration;				
 				this.$store.dispatch('resetProgress', {currentTime, duration});
 			},
+			isState(){
+				if(this.willShow){
+					this.willShow=false
+				}else{
+					this.willShow=true
+				}
+			}
 			
         },
 		watch:{
@@ -115,10 +139,41 @@
 					audio.play()
 					console.log(audio.currentTime,audio.duration)
 				}
+			},
+			currentTime(time) {
+				let	timeArr = this.lyricsObj.timeArr,
+					lyricsArr = this.lyricsObj.lyricsArr,
+					durationArr = this.lyricsObj.durationArr;
+				
+				timeArr.forEach((item, index) => {
+					
+					if (item == parseInt(time)) {
+						this.currentLyric = lyricsArr[index];
+						this.switchLyricIndex(index);
+						this.switchLyricDuration(durationArr[index]);
+					}
+				});
 			}
 			
 		},
-       
+		components:{
+            Fullback
+        },
+       	mounted: function() {
+            let that = this
+			let playingsongid=this.$store.state.songid;
+
+            jsonp(`https://api.darlin.me/music/lyric/${playingsongid}/?`,
+            {
+            
+            },function(err,data){		
+				let lyrics=Base64.decode(data.lyric)
+				that.lyricsObj = lyricsAnalysis(lyrics);				
+				that.switchLyricsArr(that.lyricsObj.lyricsArr);
+				console.log(that.$store.state.songState.currentLyricArr)
+            });
+
+        }
 			
             
          
@@ -156,5 +211,13 @@ audio{
   to {
     transform: rotate(360deg);
   }
+}
+.songlyric{
+	height:55.75rem;
+	margin:0 auto 5rem;
+	line-height:2.5rem;
+	font-size:1.5rem;
+	text-align:center;
+	overflow:hidden;
 }
 </style>

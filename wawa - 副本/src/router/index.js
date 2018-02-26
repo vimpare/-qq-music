@@ -21,7 +21,7 @@ export default new Router({
       component:Gen  // 对应的组件
     },
     {
-      path: '/bofang',  // 路径
+      path: '/bofang/:id',  // 路径
       component: Bofang // 对应的组件
     },
     {
@@ -39,10 +39,12 @@ export default new Router({
     {
       path: '/gedanx',  // 路径
       component: Gedanx // 对应的组件
+     
     },
     {
-      path: '/geshoux',  // 路径
-      component: Geshoux // 对应的组件
+      path: '/geshoux/:id',  // 路径
+      component: Geshoux,// 对应的组件
+     
     }
   ]
 })

@@ -1,11 +1,13 @@
 <template>
     <div id="box">
             <div class="header clearfix">
-                <div  class="sousuo clearfix">
-                    <span class="sousuo-icon"></span>
-                    <input type="text" placeholder="搜索音乐" class="sousuo-text">
-                </div>
-                <span class="bofang-icon"></span>
+                <mt-search                
+                    cancel-text="取消"
+                    placeholder="搜索">
+                   
+                </mt-search>
+                
+                <Playing></Playing>
             </div>
              
             <div class="banner">
@@ -64,6 +66,7 @@
 </template>
 <script>
      import Lunbo from './lunbo'
+     import Playing from './playing'
     var jsonp = require('jsonp');
     var data={}
     export default {
@@ -74,7 +77,8 @@
             }
         },
         components:{
-            Lunbo
+            Lunbo,
+            Playing
         },
         mounted: function() {
             let that = this
@@ -93,3 +97,28 @@
         }
     }
 </script>
+<style>
+.mint-search{
+    float:left;
+  width:53rem;
+  height:auto;
+  margin-left:1rem;
+}
+.mint-searchbar-inner{
+    height:2.9rem;
+   
+}
+.mintui-search{
+    
+}
+.mintui-search:before{
+    font-size:1.8rem;
+}
+.mint-searchbar-core{
+    font-size:1.5rem;
+}
+.mint-searchbar-cancel{
+    width:3rem;
+    margin-left:1rem;
+}
+</style>

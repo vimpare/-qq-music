@@ -6,5 +6,6 @@ export default{
         this.$store.commit('getmid',obj)
         this.$store.commit('getsongid', songid);
       }
-    }
+    }  
+   
   }

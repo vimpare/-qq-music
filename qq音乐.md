@@ -208,3 +208,228 @@ https://c.y.qq.com/v8/fcg-bin/v8.fcg?channel=singer&page=list&key=k_woman_all&pa
 
 轮播图：
 https://u.y.qq.com/cgi-bin/musicu.fcg?loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&data={"comm":{"ct":24},"focus":{"module":"QQMusic.MusichallServer","method":"GetFocus","param":{}}}
+
+--------------------------------
+歌词：
+ https://api.darlin.me/music/lyric/4900010/?
+ -------------------------------------------
+ 
+
+播放器：
+----
+
+ 第一次打开，audio标签后面加上autoplay打开网页就自动播放了，再加上controls就会出现默认的控制器，否则页面什么都没有，看上去还以为出问题呢！确认加载无误，就可以删除了。
+先完成最基础的功能就是播放/暂停。利用audio.play()和audio.pause()就可以轻松的实现了。注意：不是stop();
+
+**ref="audio"**
+
+**在组件中提交 Mutation**
+
+你可以在组件中使用 this.$store.commit('xxx') 提交 mutation，或者使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用（需要在根节点注入 store）。
+
+    import { mapMutations } from 'vuex'
+    
+    export default {
+      // ...
+      methods: {
+        ...mapMutations([
+          'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+    
+          // `mapMutations` 也支持载荷：
+          'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+        ]),
+        ...mapMutations({
+          add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+        })
+      }
+    }
+
+---------------------------------------------------
+播放暂停按钮根据歌曲播放状态切换
+：
+    
+    <span 
+		:class="playingState == 'pause' ? 'song-icon-pause' : 'song-icon-start'"
+		@click="pause(playingState == 'pause' ? '' : 'pause')"></span>
+		
+		
+--------------------------------------------
+
+vue挂载全局函数：
+----------
+
+//在mian.js中写入函数
+Vue.prototype.changeData = function (){
+  alert('执行成功');
+}
+//在所有组件里可调用函数
+this.changeData();
+
+
+方法二:
+// 写好自己需要的base.js文件
+exports.install = function (Vue, options) {
+    Vue.prototype.changeData = function (){
+        alert('执行成功');
+    };
+};
+// main.js 引入并使用
+import base from './base'
+Vue.use(base);
+//在所有组件里可调用函数
+this.changeData();
+----------------------------------------
+http://dl.stream.qqmusic.qq.com/C400003avUdD2Iwk2d.m4a?vkey=4119D8A418A65419C8BF474E5F3AE597862CE06F327BED4526117F6216A83A19385A060047234320E109DD0EC9AE76A66EEE6BC602A55F78&guid=2597215298&uin=0&fromtag=66
+
+--------------》》》
+去掉vkey
+http://dl.stream.qqmusic.qq.com/C400003avUdD2Iwk2d.m4a?fromtag=66
+
+薛之谦 别
+http://dl.stream.qqmusic.qq.com/C400003uIckZ4ZP87A.m4a?vkey=4918AF550FF8D068CBE410CE8C0679FF56BD4964AE0C27BE984DCCCF697F4D15BEAB946B078FFC7A945C3672F8C15EB8421FD2C06B73BCFB&guid=2597215298&uin=0&fromtag=66
+
+songid:206379449
+http://dl.stream.qqmusic.qq.com/206379449.m4a?vkey=4918AF550FF8D068CBE410CE8C0679FF56BD4964AE0C27BE984DCCCF697F4D15BEAB946B078FFC7A945C3672F8C15EB8421FD2C06B73BCFB&guid=2597215298&uin=0&fromtag=66
+
+    getMedia(){
+				let songid=this.$store.state.songid
+				console.log(songid)
+				return 'http://dl.stream.qqmusic.qq.com/'+songid+'.m4a?fromtag=66'
+			}
+			
+图片地址：
+https://y.gtimg.cn/music/photo_new/T002R300x300M0000037qtDt3hxO46.jpg?max_age=2592000
+
+     mounted: function() {
+                let that = this
+                jsonp(`https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg?albummid=003UdczR02zr72&g_tk=5381&loginUin=0&hostUin=0&format=jsonp&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0
+            `,
+                {
+                 param: 'jsonpCallback'
+                },function(err,data){
+               
+    			that.imgsrc='https://y.gtimg.cn/music/photo_new/T002R300x300M000'+data.data.mid+'.jpg?max_age=2592000'
+                
+                });
+    
+            }
+
+进度条：
+----
+
+**timeupdate** 事件在音频/视频（audio/video）的播放位置发生改变时触发。
+该事件可以在以下情况被调用:
+播放音频/视频（audio/video）
+移动音频/视频（audio/video）播放位置
+提示： timeupdate 事件通常与 Audio/Video 对象的 currentTime 属性一起使用，该属性返回音频/视频（audio/video）的播放位置（以秒计）。
+currentTime 属性设置或返回音频/视频播放的当前位置（以秒计）。
+当设置该属性时，播放会跳跃到指定的位置。
+duration 属性返回当前音频的长度，以秒计。
+
+ 
+
+    <audio id="bgMusic"  
+		ref="audio"
+		:src="getMedia()" 
+		type="audio/mp3"
+		@timeupdate="_playProgress"
+		>
+	</audio>
+	
+在methods:{}里：
+
+    _playProgress(e) {
+		let audio = e.target,
+			currentTime = audio.currentTime,
+			duration = audio.duration;				
+		this.$store.dispatch('resetProgress', {currentTime, duration});
+			}
+	
+状态管理里：
+
+    actions: {
+        resetProgress({state,commit,dispatch},payload={currentTime: 0, duration: 0}){
+          let current = parseInt(payload.currentTime) || 0,
+              timing = parseInt(payload.duration) || 0;
+              state.songState.playingProgress = current/timing;
+    					state.songState.current = current;
+    					state.songState.timing = timing;
+       }
+      }
+进度条播放位置和全部时间根据vuex里状态渲染
+
+    <div class="jindu clearfix">
+		<mt-progress :value="playingProgress*100">
+			<div slot="start" class="playing-current">{{playingCurrent}}</div>
+			<div slot="end" class="playing-timing">{{playingTiming}}</div>
+		</mt-progress>									
+	</div>
+
+在script里：
+
+    computed:{
+	    playingState() {
+			return this.$store.state.songState.playingState	
+	    },
+    	playingCurrent(){
+    		let current=this.$store.state.songState.current;
+    		return parseInt(current/60)+':'+current%60
+    	},
+    	playingTiming(){
+    		let timing=this.$store.state.songState.timing
+    		return parseInt(timing/60)+':'+timing%60
+    	},
+    	playingProgress(){
+    		return this.$store.state.songState.playingProgress
+    	}
+}
+
+--------------------------------------------------
+**歌手头像随音乐播放转动**
+给歌手头像加class类名spin
+在style里：
+
+    .spin{
+    	 animation: spin 30s linear infinite;
+    }
+    @keyframes spin{
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+spin意思：自旋
+rotate:自转
+animation:
+    as each of the properties of the shorthand:
+   
+
+        animation-name: none
+        animation-duration: 0s
+        animation-timing-function: ease
+        animation-delay: 0s
+        animation-iteration-count: 1
+        animation-direction: normal
+        animation-fill-mode: none
+        animation-play-state: running
+ 
+ 这里存在一个IOS Safari的BUG -webkit-animatin-pause 在IOS下会被完全忽略想请可以查看
+	 *		http://stackoverflow.com/questions/27683012/css-animation-play-state-paused-doesnt-work-in-ios
+	 *		因而改为直接在封面滚动的动画上改为animation的添加和删除也由此使得头像的滚动动画无法暂停而是重新开始
+ ----------------------------------------------
+ 
+**歌词部分：**
+歌词：
+ https://api.darlin.me/music/lyric/4900010/?
+
+
+
+<div class="header clearfix">
+                <div  class="sousuo clearfix">
+                    <span class="sousuo-icon"></span>
+                    <input type="text" placeholder="搜索音乐" class="sousuo-text">
+                </div>
+                <span class="bofang-icon"></span>
+            </div>

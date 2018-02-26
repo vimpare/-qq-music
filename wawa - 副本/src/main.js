@@ -15,11 +15,17 @@ Vue.component(IndexList.name, IndexList);
 Vue.component(IndexSection.name, IndexSection);
 
 import { Progress } from 'mint-ui';
+Vue.component(Progress.name, Progress);
+
+import { Search } from 'mint-ui';
+Vue.component(Search.name, Search);
 
 import utils from './utils/utils'
 Vue.use(utils);
 
-Vue.component(Progress.name, Progress);
+import { Base64 } from 'js-base64';
+
+
 import 'mint-ui/lib/style.css'
 import './assets/yinyuecss/reset.css'
 import './assets/yinyuecss/index.css'

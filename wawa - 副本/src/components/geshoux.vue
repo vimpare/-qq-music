@@ -1,17 +1,17 @@
 <template>
     <div id="paihangbox">
             <div class="header clearfix">
-				<span class="fanhui-icon"></span>
+				<Fullback></Fullback>
 				<p class="siner-xiang-name">{{$store.state.singername}}</p>
-                <span class="bofang-icon"></span>
+                <Playing></Playing>
             </div>
-			<div class="singer-xiang-image"><img :src="getmid($store.state.singermid)"></div>
+			<div class="singer-xiang-image"><img :src="getmid($route.params.id)"></div>
 			<div class="singer-xiang-title">最热歌曲</div>
 			<ol class="singer-xiang-list">
 				<li class="clearfix" 
                     v-for="item,index in song"
                     @touchend="playMusic(item,item.musicData.songid)">
-                    <router-link to="/bofang">
+                    <router-link :to="'/bofang/'+item.musicData.songid" >
 					<div class="singer-xiang-item">
 						<p class=singer-xiang-item-song>{{item.musicData.songname}}</p>
 						<p class=singer-xiang-item-zhuanji>{{item.musicData.singer[0].name}}·{{
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+     import Fullback from './fallback'
+     import Playing from './playing'
     var jsonp = require('jsonp');
     var data={}
     export default {
@@ -44,9 +46,13 @@
             }
 			
         },
+        components:{
+            Fullback,
+            Playing
+        },
         mounted: function() {
-            console.log(this.$store.state.singermid)
-            let singerindex=this.$store.state.singermid;
+            console.log(this.$route.params.id)
+            let singerindex=this.$route.params.id
             let that = this
             let url=''
 
